@@ -1,0 +1,46 @@
+.khalij-form form button {
+  background: #ec6b31;
+}
+.khalij-form form textarea:focus,.related-product-slider.owl-theme .owl-nav [class*=owl-]:hover {
+  border-color: #ec6b31;
+  border-style: solid;
+}
+.khalij-form form textarea:focus,.related-product-slider.owl-theme .owl-nav [class*=owl-]:hover {
+  border-color: #ec6b31;
+  border-style: solid;
+}
+.khalij-form form button:hover  {
+  background: #212121;
+}
+.khalij-form .row {
+  margin: 0 -10px;
+}
+.khalij-form .row [class*="col-"] {
+  padding: 0 10px;
+}
+.khalij-form form .single-input {
+  margin-bottom: 22px;
+}
+.khalij-form form input,
+.khalij-form form textarea {
+  width: 100%;
+  max-width: 100%;
+  font-size: 15px;
+  border:1px solid #ececec;
+  padding: 0 15px 0 15px;
+  border-radius: 5px;
+}
+.khalij-form form input {
+  height: 50px;
+}
+.khalij-form form textarea {
+  height: 165px;
+  max-height: 165px;
+  padding: 15px;
+}
+.khalij-form form button {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+}
