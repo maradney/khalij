@@ -1,36 +1,37 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
+  if (typeof define === "function" && define.amd) {
     define(['module', 'exports'], factory);
-  } else if (typeof exports !== 'undefined') {
+  } else if (typeof exports !== "undefined") {
     factory(module, exports);
   } else {
-    const mod = {
-      exports: {},
+    var mod = {
+      exports: {}
     };
     factory(mod, mod.exports);
     global.WOW = mod.exports;
   }
-}(this, (module, exports) => {
-  Object.defineProperty(exports, '__esModule', {
-    value: true,
+})(this, function (module, exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
   });
 
-  let _class; let
-    _temp;
+  var _class, _temp;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
-      throw new TypeError('Cannot call a class as a function');
+      throw new TypeError("Cannot call a class as a function");
     }
   }
 
-  const _createClass = (function () {
+  var _createClass = function () {
     function defineProperties(target, props) {
-      for (let i = 0; i < props.length; i++) {
-        const descriptor = props[i];
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
         descriptor.enumerable = descriptor.enumerable || false;
         descriptor.configurable = true;
-        if ('value' in descriptor) descriptor.writable = true;
+        if ("value" in descriptor) descriptor.writable = true;
         Object.defineProperty(target, descriptor.key, descriptor);
       }
     }
@@ -40,16 +41,16 @@
       if (staticProps) defineProperties(Constructor, staticProps);
       return Constructor;
     };
-  }());
+  }();
 
   function isIn(needle, haystack) {
     return haystack.indexOf(needle) >= 0;
   }
 
   function extend(custom, defaults) {
-    for (const key in defaults) {
+    for (var key in defaults) {
       if (custom[key] == null) {
-        const value = defaults[key];
+        var value = defaults[key];
         custom[key] = value;
       }
     }
@@ -62,11 +63,11 @@
   }
 
   function createEvent(event) {
-    const bubble = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-    const cancel = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
-    const detail = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
+    var bubble = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+    var cancel = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+    var detail = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
 
-    let customEvent = void 0;
+    var customEvent = void 0;
     if (document.createEvent != null) {
       // W3C DOM
       customEvent = document.createEvent('CustomEvent');
@@ -88,8 +89,8 @@
       elem.dispatchEvent(event);
     } else if (event in (elem != null)) {
       elem[event]();
-    } else if (`on${event}` in (elem != null)) {
-      elem[`on${event}`]();
+    } else if ('on' + event in (elem != null)) {
+      elem['on' + event]();
     }
   }
 
@@ -99,7 +100,7 @@
       elem.addEventListener(event, fn, false);
     } else if (elem.attachEvent != null) {
       // IE DOM
-      elem.attachEvent(`on${event}`, fn);
+      elem.attachEvent('on' + event, fn);
     } else {
       // fallback
       elem[event] = fn;
@@ -112,7 +113,7 @@
       elem.removeEventListener(event, fn, false);
     } else if (elem.detachEvent != null) {
       // IE DOM
-      elem.detachEvent(`on${event}`, fn);
+      elem.detachEvent('on' + event, fn);
     } else {
       // fallback
       delete elem[event];
@@ -128,7 +129,7 @@
   }
 
   // Minimalistic WeakMap shim, just in case.
-  const WeakMap = window.WeakMap || window.MozWeakMap || (function () {
+  var WeakMap = window.WeakMap || window.MozWeakMap || function () {
     function WeakMap() {
       _classCallCheck(this, WeakMap);
 
@@ -139,19 +140,19 @@
     _createClass(WeakMap, [{
       key: 'get',
       value: function get(key) {
-        for (let i = 0; i < this.keys.length; i++) {
-          const item = this.keys[i];
+        for (var i = 0; i < this.keys.length; i++) {
+          var item = this.keys[i];
           if (item === key) {
             return this.values[i];
           }
         }
         return undefined;
-      },
+      }
     }, {
       key: 'set',
       value: function set(key, value) {
-        for (let i = 0; i < this.keys.length; i++) {
-          const item = this.keys[i];
+        for (var i = 0; i < this.keys.length; i++) {
+          var item = this.keys[i];
           if (item === key) {
             this.values[i] = value;
             return this;
@@ -160,14 +161,14 @@
         this.keys.push(key);
         this.values.push(value);
         return this;
-      },
+      }
     }]);
 
     return WeakMap;
-  }());
+  }();
 
   // Dummy MutationObserver, to avoid raising exceptions.
-  const MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (_temp = _class = (function () {
+  var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (_temp = _class = function () {
     function MutationObserver() {
       _classCallCheck(this, MutationObserver);
 
@@ -179,33 +180,35 @@
 
     _createClass(MutationObserver, [{
       key: 'observe',
-      value: function observe() {},
+      value: function observe() {}
     }]);
 
     return MutationObserver;
-  }()), _class.notSupported = true, _temp);
+  }(), _class.notSupported = true, _temp);
 
   // getComputedStyle shim, from http://stackoverflow.com/a/21797294
-  const getComputedStyle = window.getComputedStyle || function getComputedStyle(el) {
-    const getComputedStyleRX = /(\-([a-z]){1})/g;
+  var getComputedStyle = window.getComputedStyle || function getComputedStyle(el) {
+    var getComputedStyleRX = /(\-([a-z]){1})/g;
     return {
       getPropertyValue: function getPropertyValue(prop) {
         if (prop === 'float') {
           prop = 'styleFloat';
         }
         if (getComputedStyleRX.test(prop)) {
-          prop.replace(getComputedStyleRX, (_, _char) => _char.toUpperCase());
+          prop.replace(getComputedStyleRX, function (_, _char) {
+            return _char.toUpperCase();
+          });
         }
-        const { currentStyle } = el;
+        var currentStyle = el.currentStyle;
 
         return (currentStyle != null ? currentStyle[prop] : void 0) || null;
-      },
+      }
     };
   };
 
-  const WOW = (function () {
+  var WOW = function () {
     function WOW() {
-      const options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
       _classCallCheck(this, WOW);
 
@@ -217,10 +220,10 @@
         live: true,
         callback: null,
         scrollContainer: null,
-        resetAnimation: true,
+        resetAnimation: true
       };
 
-      this.animate = (function animateFactory() {
+      this.animate = function animateFactory() {
         if ('requestAnimationFrame' in window) {
           return function (callback) {
             return window.requestAnimationFrame(callback);
@@ -229,7 +232,7 @@
         return function (callback) {
           return callback();
         };
-      }());
+      }();
 
       this.vendors = ['moz', 'webkit'];
 
@@ -257,21 +260,21 @@
           addEvent(document, 'DOMContentLoaded', this.start);
         }
         this.finished = [];
-      },
+      }
     }, {
       key: 'start',
       value: function start() {
-        const _this = this;
+        var _this = this;
 
         this.stopped = false;
-        this.boxes = [].slice.call(this.element.querySelectorAll(`.${this.config.boxClass}`));
+        this.boxes = [].slice.call(this.element.querySelectorAll('.' + this.config.boxClass));
         this.all = this.boxes.slice(0);
         if (this.boxes.length) {
           if (this.disabled()) {
             this.resetStyle();
           } else {
-            for (let i = 0; i < this.boxes.length; i++) {
-              const box = this.boxes[i];
+            for (var i = 0; i < this.boxes.length; i++) {
+              var box = this.boxes[i];
               this.applyStyle(box, true);
             }
           }
@@ -282,22 +285,22 @@
           this.interval = setInterval(this.scrollCallback, 50);
         }
         if (this.config.live) {
-          const mut = new MutationObserver(((records) => {
-            for (let j = 0; j < records.length; j++) {
-              const record = records[j];
-              for (let k = 0; k < record.addedNodes.length; k++) {
-                const node = record.addedNodes[k];
+          var mut = new MutationObserver(function (records) {
+            for (var j = 0; j < records.length; j++) {
+              var record = records[j];
+              for (var k = 0; k < record.addedNodes.length; k++) {
+                var node = record.addedNodes[k];
                 _this.doSync(node);
               }
             }
             return undefined;
-          }));
+          });
           mut.observe(document.body, {
             childList: true,
-            subtree: true,
+            subtree: true
           });
         }
-      },
+      }
     }, {
       key: 'stop',
       value: function stop() {
@@ -307,14 +310,14 @@
         if (this.interval != null) {
           clearInterval(this.interval);
         }
-      },
+      }
     }, {
       key: 'sync',
       value: function sync() {
         if (MutationObserver.notSupported) {
           this.doSync(this.element);
         }
-      },
+      }
     }, {
       key: 'doSync',
       value: function doSync(element) {
@@ -325,9 +328,9 @@
           return;
         }
         element = element.parentNode || element;
-        const iterable = element.querySelectorAll(`.${this.config.boxClass}`);
-        for (let i = 0; i < iterable.length; i++) {
-          const box = iterable[i];
+        var iterable = element.querySelectorAll('.' + this.config.boxClass);
+        for (var i = 0; i < iterable.length; i++) {
+          var box = iterable[i];
           if (!isIn(box, this.all)) {
             this.boxes.push(box);
             this.all.push(box);
@@ -339,12 +342,12 @@
             this.scrolled = true;
           }
         }
-      },
+      }
     }, {
       key: 'show',
       value: function show(box) {
         this.applyStyle(box);
-        box.className = `${box.className} ${this.config.animateClass}`;
+        box.className = box.className + ' ' + this.config.animateClass;
         if (this.config.callback != null) {
           this.config.callback(box);
         }
@@ -358,35 +361,37 @@
         }
 
         return box;
-      },
+      }
     }, {
       key: 'applyStyle',
       value: function applyStyle(box, hidden) {
-        const _this2 = this;
+        var _this2 = this;
 
-        const duration = box.getAttribute('data-wow-duration');
-        const delay = box.getAttribute('data-wow-delay');
-        const iteration = box.getAttribute('data-wow-iteration');
+        var duration = box.getAttribute('data-wow-duration');
+        var delay = box.getAttribute('data-wow-delay');
+        var iteration = box.getAttribute('data-wow-iteration');
 
-        return this.animate(() => _this2.customStyle(box, hidden, duration, delay, iteration));
-      },
+        return this.animate(function () {
+          return _this2.customStyle(box, hidden, duration, delay, iteration);
+        });
+      }
     }, {
       key: 'resetStyle',
       value: function resetStyle() {
-        for (let i = 0; i < this.boxes.length; i++) {
-          const box = this.boxes[i];
+        for (var i = 0; i < this.boxes.length; i++) {
+          var box = this.boxes[i];
           box.style.visibility = 'visible';
         }
         return undefined;
-      },
+      }
     }, {
       key: 'resetAnimation',
       value: function resetAnimation(event) {
         if (event.type.toLowerCase().indexOf('animationend') >= 0) {
-          const target = event.target || event.srcElement;
+          var target = event.target || event.srcElement;
           target.className = target.className.replace(this.config.animateClass, '').trim();
         }
-      },
+      }
     }, {
       key: 'customStyle',
       value: function customStyle(box, hidden, duration, delay, iteration) {
@@ -407,36 +412,36 @@
         this.vendorSet(box.style, { animationName: hidden ? 'none' : this.cachedAnimationName(box) });
 
         return box;
-      },
+      }
     }, {
       key: 'vendorSet',
       value: function vendorSet(elem, properties) {
-        for (const name in properties) {
+        for (var name in properties) {
           if (properties.hasOwnProperty(name)) {
-            const value = properties[name];
-            elem[`${name}`] = value;
-            for (let i = 0; i < this.vendors.length; i++) {
-              const vendor = this.vendors[i];
-              elem[`${vendor}${name.charAt(0).toUpperCase()}${name.substr(1)}`] = value;
+            var value = properties[name];
+            elem['' + name] = value;
+            for (var i = 0; i < this.vendors.length; i++) {
+              var vendor = this.vendors[i];
+              elem['' + vendor + name.charAt(0).toUpperCase() + name.substr(1)] = value;
             }
           }
         }
-      },
+      }
     }, {
       key: 'vendorCSS',
       value: function vendorCSS(elem, property) {
-        const style = getComputedStyle(elem);
-        let result = style.getPropertyCSSValue(property);
-        for (let i = 0; i < this.vendors.length; i++) {
-          const vendor = this.vendors[i];
-          result = result || style.getPropertyCSSValue(`-${vendor}-${property}`);
+        var style = getComputedStyle(elem);
+        var result = style.getPropertyCSSValue(property);
+        for (var i = 0; i < this.vendors.length; i++) {
+          var vendor = this.vendors[i];
+          result = result || style.getPropertyCSSValue('-' + vendor + '-' + property);
         }
         return result;
-      },
+      }
     }, {
       key: 'animationName',
       value: function animationName(box) {
-        let aName = void 0;
+        var aName = void 0;
         try {
           aName = this.vendorCSS(box, 'animation-name').cssText;
         } catch (error) {
@@ -449,32 +454,32 @@
         }
 
         return aName;
-      },
+      }
     }, {
       key: 'cacheAnimationName',
       value: function cacheAnimationName(box) {
         // https://bugzilla.mozilla.org/show_bug.cgi?id=921834
         // box.dataset is not supported for SVG elements in Firefox
         return this.animationNameCache.set(box, this.animationName(box));
-      },
+      }
     }, {
       key: 'cachedAnimationName',
       value: function cachedAnimationName(box) {
         return this.animationNameCache.get(box);
-      },
+      }
     }, {
       key: 'scrollHandler',
       value: function scrollHandler() {
         this.scrolled = true;
-      },
+      }
     }, {
       key: 'scrollCallback',
       value: function scrollCallback() {
         if (this.scrolled) {
           this.scrolled = false;
-          const results = [];
-          for (let i = 0; i < this.boxes.length; i++) {
-            const box = this.boxes[i];
+          var results = [];
+          for (var i = 0; i < this.boxes.length; i++) {
+            var box = this.boxes[i];
             if (box) {
               if (this.isVisible(box)) {
                 this.show(box);
@@ -488,7 +493,7 @@
             this.stop();
           }
         }
-      },
+      }
     }, {
       key: 'offsetTop',
       value: function offsetTop(element) {
@@ -498,34 +503,34 @@
         while (element.offsetTop === undefined) {
           element = element.parentNode;
         }
-        let top = element.offsetTop;
+        var top = element.offsetTop;
         while (element.offsetParent) {
           element = element.offsetParent;
           top += element.offsetTop;
         }
         return top;
-      },
+      }
     }, {
       key: 'isVisible',
       value: function isVisible(box) {
-        const offset = box.getAttribute('data-wow-offset') || this.config.offset;
-        const viewTop = this.config.scrollContainer && this.config.scrollContainer.scrollTop || window.pageYOffset;
-        const viewBottom = viewTop + Math.min(this.element.clientHeight, getInnerHeight()) - offset;
-        const top = this.offsetTop(box);
-        const bottom = top + box.clientHeight;
+        var offset = box.getAttribute('data-wow-offset') || this.config.offset;
+        var viewTop = this.config.scrollContainer && this.config.scrollContainer.scrollTop || window.pageYOffset;
+        var viewBottom = viewTop + Math.min(this.element.clientHeight, getInnerHeight()) - offset;
+        var top = this.offsetTop(box);
+        var bottom = top + box.clientHeight;
 
         return top <= viewBottom && bottom >= viewTop;
-      },
+      }
     }, {
       key: 'disabled',
       value: function disabled() {
         return !this.config.mobile && isMobile(navigator.userAgent);
-      },
+      }
     }]);
 
     return WOW;
-  }());
+  }();
 
   exports.default = WOW;
-  module.exports = exports.default;
-}));
+  module.exports = exports['default'];
+});

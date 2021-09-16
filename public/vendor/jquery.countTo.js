@@ -1,43 +1,43 @@
 (function ($) {
   var CountTo = function (element, options) {
     this.$element = $(element);
-    this.options = $.extend({}, CountTo.DEFAULTS, this.dataOptions(), options);
+    this.options  = $.extend({}, CountTo.DEFAULTS, this.dataOptions(), options);
     this.init();
   };
 
   CountTo.DEFAULTS = {
-    from: 0, // the number the element should start at
-    to: 0, // the number the element should end at
-    speed: 1000, // how long it should take to count between the target numbers
-    refreshInterval: 100, // how often the element should be updated
-    decimals: 0, // the number of decimal places to show
-    formatter, // handler for formatting the value before rendering
-    onUpdate: null, // callback method for every time the element is updated
-    onComplete: null, // callback method for when the element finishes updating
+    from: 0,               // the number the element should start at
+    to: 0,                 // the number the element should end at
+    speed: 1000,           // how long it should take to count between the target numbers
+    refreshInterval: 100,  // how often the element should be updated
+    decimals: 0,           // the number of decimal places to show
+    formatter: formatter,  // handler for formatting the value before rendering
+    onUpdate: null,        // callback method for every time the element is updated
+    onComplete: null       // callback method for when the element finishes updating
   };
 
   CountTo.prototype.init = function () {
-    this.value = this.options.from;
-    this.loops = Math.ceil(this.options.speed / this.options.refreshInterval);
+    this.value     = this.options.from;
+    this.loops     = Math.ceil(this.options.speed / this.options.refreshInterval);
     this.loopCount = 0;
     this.increment = (this.options.to - this.options.from) / this.loops;
   };
 
   CountTo.prototype.dataOptions = function () {
-    const options = {
-      from: this.$element.data('from'),
-      to: this.$element.data('to'),
-      speed: this.$element.data('speed'),
+    var options = {
+      from:            this.$element.data('from'),
+      to:              this.$element.data('to'),
+      speed:           this.$element.data('speed'),
       refreshInterval: this.$element.data('refresh-interval'),
-      decimals: this.$element.data('decimals'),
+      decimals:        this.$element.data('decimals')
     };
 
-    const keys = Object.keys(options);
+    var keys = Object.keys(options);
 
-    for (const i in keys) {
-      const key = keys[i];
+    for (var i in keys) {
+      var key = keys[i];
 
-      if (typeof (options[key]) === 'undefined') {
+      if (typeof(options[key]) === 'undefined') {
         delete options[key];
       }
     }
@@ -51,7 +51,7 @@
 
     this.render();
 
-    if (typeof (this.options.onUpdate) === 'function') {
+    if (typeof(this.options.onUpdate) == 'function') {
       this.options.onUpdate.call(this.$element, this.value);
     }
 
@@ -59,14 +59,14 @@
       clearInterval(this.interval);
       this.value = this.options.to;
 
-      if (typeof (this.options.onComplete) === 'function') {
+      if (typeof(this.options.onComplete) == 'function') {
         this.options.onComplete.call(this.$element, this.value);
       }
     }
   };
 
   CountTo.prototype.render = function () {
-    const formattedValue = this.options.formatter.call(this.$element, this.value, this.options);
+    var formattedValue = this.options.formatter.call(this.$element, this.value, this.options);
     this.$element.text(formattedValue);
   };
 
@@ -102,11 +102,11 @@
 
   $.fn.countTo = function (option) {
     return this.each(function () {
-      const $this = $(this);
-      let data = $this.data('countTo');
-      const init = !data || typeof (option) === 'object';
-      const options = typeof (option) === 'object' ? option : {};
-      const method = typeof (option) === 'string' ? option : 'start';
+      var $this   = $(this);
+      var data    = $this.data('countTo');
+      var init    = !data || typeof(option) === 'object';
+      var options = typeof(option) === 'object' ? option : {};
+      var method  = typeof(option) === 'string' ? option : 'start';
 
       if (init) {
         if (data) data.stop();
