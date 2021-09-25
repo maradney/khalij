@@ -10,9 +10,9 @@
         <div class="theme-main-menu">
           <div class="container">
             <div class="main-container clearfix">
-              <div class="logo float-left">
+              <div class="logo__container float-left">
                 <a href="/">
-                  <img class="logo" src="logo.png" alt="Logo">
+                  <img class="logo__container__img" src="logo.png" alt="Logo">
                 </a>
               </div>
 
@@ -67,13 +67,6 @@
       </header>
 
       <router-view></router-view>
-
-      <div class="bottom-footer-banner ch-p-bg-color">
-        <div class="container">
-          <h3 class="float-left">Want to participate as a volunteer?</h3>
-          <a href="#" class="float-right button-five">Contact Now!!</a>
-        </div>
-      </div>
 
       <footer class="default-footer charity-footer">
         <div class="container">
@@ -165,6 +158,12 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .logo {
-  height: 100px;
+  &__container {
+    background-color: white;
+    border-radius: 75px;
+    &__img {
+      height: 120px;
+    }
+  }
 }
 </style>

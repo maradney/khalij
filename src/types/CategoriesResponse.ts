@@ -1,5 +1,3 @@
-import { CategoryProductsResponse } from '@/types/CategoryProductsResponse';
-
 export type CategoriesResponse = {
   success: boolean;
   data: {
@@ -8,7 +6,6 @@ export type CategoriesResponse = {
     thumb: string;
     name: string;
     slug: string;
-    products: CategoryProductsResponse['data'];
   }[];
   message: string;
 };

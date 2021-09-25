@@ -135,100 +135,57 @@
       </div> <!-- /.container -->
     </div>
 
-<!--    <div class="our-team theme-team-style-one">-->
-<!--      <div class="container">-->
-<!--        <div class="charity-title text-center">-->
-<!--          <h2>Our Volunteer</h2>-->
-<!--          <p>No matter how many times your amazing, absolutely brilliant </p>-->
-<!--        </div> &lt;!&ndash; /.charity-title &ndash;&gt;-->
-
-<!--        <div class="row">-->
-<!--          <div class="col-md-3 col-xs-6">-->
-<!--            <div class="single-team-member text-center">-->
-<!--              <div class="img"><img src="images/team/12.jpg" alt="Image"></div>-->
-<!--              <div class="title">-->
-<!--                <h6><a href="#" class="tran3s">Antonio Creighton</a></h6>-->
-<!--                <span>Senior Volunteer</span>-->
-<!--                <ul>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>-->
-<!--                </ul>-->
-<!--              </div> &lt;!&ndash; /.title &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; /.single-team-member &ndash;&gt;-->
-<!--          </div> &lt;!&ndash; /.col- &ndash;&gt;-->
-<!--          <div class="col-md-3 col-xs-6">-->
-<!--            <div class="single-team-member text-center">-->
-<!--              <div class="img"><img src="images/team/13.jpg" alt="Image"></div>-->
-<!--              <div class="title">-->
-<!--                <h6><a href="#" class="tran3s">Jannatul Ferdous</a></h6>-->
-<!--                <span>Event Manager</span>-->
-<!--                <ul>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>-->
-<!--                </ul>-->
-<!--              </div> &lt;!&ndash; /.title &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; /.single-team-member &ndash;&gt;-->
-<!--          </div> &lt;!&ndash; /.col- &ndash;&gt;-->
-<!--          <div class="col-md-3 col-xs-6">-->
-<!--            <div class="single-team-member text-center">-->
-<!--              <div class="img"><img src="images/team/14.jpg" alt="Image"></div>-->
-<!--              <div class="title">-->
-<!--                <h6><a href="#" class="tran3s">Rashed kabir Abs</a></h6>-->
-<!--                <span>Head of Volunteer</span>-->
-<!--                <ul>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>-->
-<!--                </ul>-->
-<!--              </div> &lt;!&ndash; /.title &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; /.single-team-member &ndash;&gt;-->
-<!--          </div> &lt;!&ndash; /.col- &ndash;&gt;-->
-<!--          <div class="col-md-3 col-xs-6">-->
-<!--            <div class="single-team-member text-center">-->
-<!--              <div class="img"><img src="images/team/15.jpg" alt="Image"></div>-->
-<!--              <div class="title">-->
-<!--                <h6><a href="#" class="tran3s">Zubayer Hasan</a></h6>-->
-<!--                <span>CEO at Google</span>-->
-<!--                <ul>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-<!--                  <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>-->
-<!--                </ul>-->
-<!--              </div> &lt;!&ndash; /.title &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; /.single-team-member &ndash;&gt;-->
-<!--          </div> &lt;!&ndash; /.col- &ndash;&gt;-->
-<!--        </div> &lt;!&ndash; /.row &ndash;&gt;-->
-<!--      </div> &lt;!&ndash; /.container &ndash;&gt;-->
-<!--    </div> &lt;!&ndash; /.our-team &ndash;&gt;-->
-
-    <div class="recent-cause" v-for="(category, index) in pm.categories" :key="`c${category.name} - ${index}`">
+    <div class="our-team theme-team-style-one">
       <div class="container">
         <div class="charity-title text-center">
-          <h2>{{ category.name }}</h2>
+          <h2>Categories</h2>
+          <p>Some of our top categories</p>
+        </div> <!-- /.charity-title -->
+
+        <div class="home-page__categories">
+          <div class="home-page__categories__category"
+               v-for="(category, index) in pm.categories" :key="`c${category.name} - ${index}`">
+            <div class="single-team-member text-center">
+              <div class="img">
+                <img class="home-page__categories__category__img" :src="category.image" :alt="category.name">
+              </div>
+              <div class="title">
+                <h6><a href="#" class="tran3s">{{ category.name }}</a></h6>
+              </div>
+            </div>
+          </div> <!-- /.col- -->
+        </div> <!-- /.row -->
+      </div> <!-- /.container -->
+    </div>
+
+    <div class="recent-cause">
+      <div class="container">
+        <div class="charity-title text-center">
+          <h2>Our products</h2>
+          <p>Some of our amazing products</p>
         </div>
 
         <div class="home-page__products">
           <div
             class="single-cause home-page__products__product"
-            v-for="(product, index) in category.products"
+            v-for="(product, index) in pm.products"
             :key="`p${product.name} - ${index}`">
-            <div class="img"><img :src="product.image" alt="Image"></div>
+            <div class="img">
+              <img class="home-page__products__product__img" :src="product.image" :alt="product.name">
+            </div>
             <div class="title text-center">
-              <h5><a href="#" class="tran3s">{{ product.name }}</a></h5>
-              <p v-html="product.description">
-              </p>
+              <h5 class="home-page__products__product__title"><a href="#" class="tran3s">{{ product.name }}</a></h5>
+              <div v-html="product.description.substring(0, 105)"></div>
               <span><strong>QTY :</strong> {{ product.qty }}</span>
               <div class="clearfix">
-                <a class="tran3s float-left ch-p-bg-color donate">Donate Now</a>
+                <a class="tran3s float-left ch-p-bg-color donate">Add to cart</a>
                 <a class="tran3s float-left more">More Details</a>
               </div>
             </div>
           </div>
         </div>
 
-        <a class="button-one all-cause">See all cause</a>
+        <a class="button-one all-cause">See all products</a>
       </div> <!-- /.container -->
     </div> <!-- /.recent-cause -->
   </div>
@@ -266,13 +223,42 @@ export default Vue.extend({
   margin-bottom: 50px;
 }
 .home-page {
+  &__categories {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    gap: 30px;
+    padding-top: 20px;
+    &__category {
+      max-width: 270px;
+      min-width: 270px;
+      width: 270px;
+      height: 333px;
+      border-radius: 4px;
+      margin-bottom: 115px;
+      &__img {
+        border: black 1px solid;
+      }
+    }
+  }
+
   &__products {
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
+    gap: 30px;
     &__product {
       max-width: 370px;
       min-width: 370px;
+      &__img {
+        max-width: 370px;
+        min-width: 370px;
+        width: 370px;
+        height: 247px;
+      }
+      &__title {
+        height: 35px;
+      }
     }
   }
 }

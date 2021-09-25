@@ -5,6 +5,8 @@ import { CategoryProductsResponse } from '@/types/CategoryProductsResponse';
 export default class HomePM {
   categories: CategoriesResponse['data'] = [];
 
+  products: CategoryProductsResponse['data'] = [];
+
   async hydrate(): Promise<void> {
     await this.hydrateCategories();
     await this.hydrateSomeProducts();
@@ -15,20 +17,17 @@ export default class HomePM {
     const response = await axios.get<CategoriesResponse>('http://khair-elkhalij.com/api/categories');
 
     if (response) {
-      this.categories = response.data.data.map((category) => ({ ...category, products: [] }));
+      this.categories = response.data.data;
     }
   }
 
   async hydrateSomeProducts(): Promise<void> {
-    for (let i = 0; i < this.categories.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      const response = await axios.get<CategoryProductsResponse>(
-        `http://khair-elkhalij.com/api/categories/${this.categories[i].slug}`,
-      );
+    const response = await axios.get<CategoryProductsResponse>(
+      'http://khair-elkhalij.com/api/products',
+    );
 
-      if (response) {
-        this.categories[i].products = response.data.data.slice(0, 3);
-      }
+    if (response) {
+      this.products = response.data.data.slice(0, 3);
     }
   }
 }
