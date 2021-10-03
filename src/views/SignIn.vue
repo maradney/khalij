@@ -5,7 +5,9 @@
         <div class="container">
           <h2>Sign In</h2>
           <ul>
-            <li><a class="tran3s">Home</a></li>
+            <li>
+              <router-link class="tran3s" to="/">Home</router-link>
+            </li>
             <li>/</li>
             <li>Sign In</li>
           </ul>

@@ -12,7 +12,7 @@
             <div class="main-container clearfix">
               <div class="logo__container float-left">
                 <a href="/">
-                  <img class="logo__container__img" src="logo.png" alt="Logo">
+                  <img class="logo__container__img" src="/logo.png" alt="Logo">
                 </a>
               </div>
 
@@ -47,6 +47,7 @@
                   <ul class="clearfix">
                     <li class="active">
                       <router-link to="/">Home</router-link>
+                      <router-link to="/shop">Shop</router-link>
                     </li>
 <!--                    <li>-->
 <!--                      <router-link to="/about">About us</router-link>-->
@@ -72,7 +73,7 @@
         <div class="container">
           <div class="top-footer row">
             <div class="col-md-3 col-sm-6 footer-logo">
-              <a href="#"><img src="logo.png" alt="Logo"></a>
+              <a href="#"><img src="/logo.png" alt="Logo"></a>
               <p>
                 Lorem ipsum dolor  amet natum latine copiosa at quo,
                 suas labore saperet  has there any quote for write lorem percit latineu suas dummy.

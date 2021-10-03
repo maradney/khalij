@@ -10,7 +10,6 @@ export default class HomePM {
   async hydrate(): Promise<void> {
     await this.hydrateCategories();
     await this.hydrateSomeProducts();
-    console.log(this.categories[0]);
   }
 
   async hydrateCategories(): Promise<void> {

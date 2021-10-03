@@ -210,3 +210,52 @@
 .recent-cause .single-cause .title {
   padding: 30px 0 0 0;
 }
+
+.shop-sidebar-list ul li a:hover {
+  color: #ec6b31;
+}
+.shop-sidebar-list ul li a.active {
+  color: #ec6b31;
+}
+.shop-sidebar-list ul {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  margin-bottom: 55px;
+}
+.shop-sidebar-list ul li a {
+  line-height: 50px;
+  padding: 0 30px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+  color: rgba(0,0,0,0.7);
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.shop-page .shop-sidebar-list ul li a i {
+  position: absolute;
+  top:0;
+  line-height: 49px;
+  right: 25px;
+  opacity: 0.3;
+}
+.shop-page .shop-sidebar-list ul li:last-child a {border: none;}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -4,6 +4,7 @@ export type CategoryProductsResponse = {
     id: number;
     name: string;
     description: string;
+    price: number;
     qty: number;
     sku: string;
     image:string;
