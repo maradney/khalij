@@ -11,9 +11,9 @@
           <div class="container">
             <div class="main-container clearfix">
               <div class="logo__container float-left">
-                <router-link class="tran3s" to="/">
+                <a class="tran3s" href="http://khair-elkhalij.com">
                   <img class="logo__container__img" :src="require('../public/logo.png')" alt="Logo">
-                </router-link>
+                </a>
               </div>
 
               <div class="right-content float-right">
@@ -77,7 +77,9 @@
                 <nav id="mega-menu-holder" class="clearfix">
                   <ul class="clearfix">
                     <li class="active">
-                      <router-link to="/">Home</router-link>
+                      <a class="tran3s" href="http://khair-elkhalij.com">
+                        Home
+                      </a>
                       <router-link to="/shop">Shop</router-link>
                     </li>
                   </ul>

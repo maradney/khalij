@@ -6,7 +6,9 @@
           <h2>Shop</h2>
           <ul>
             <li>
-              <router-link class="tran3s" to="/">Home</router-link>
+              <a class="tran3s" href="http://khair-elkhalij.com">
+                Home
+              </a>
             </li>
             <li>/</li>
             <li>Shop</li>
