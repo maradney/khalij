@@ -17,18 +17,18 @@ export default new Vuex.Store({
     user: {},
   } as stateOptions,
   mutations: {
-    auth_request(state) {
+    auth_request(state): void {
       state.status = 'loading';
     },
-    auth_success(state: stateOptions, payload: { token: stateOptions['token'], user: stateOptions['user'] }) {
+    auth_success(state: stateOptions, payload: { token: stateOptions['token'], user: stateOptions['user'] }): void {
       state.status = 'success';
       state.token = payload.token;
       state.user = payload.user;
     },
-    auth_error(state) {
+    auth_error(state): void {
       state.status = 'error';
     },
-    logout(state) {
+    logout(state): void {
       state.status = '';
       state.token = '';
     },

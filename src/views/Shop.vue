@@ -45,7 +45,11 @@
               <div class="clearfix">
                 <strong class="float-left">${{ product.price }}</strong>
               </div>
-              <a href="shop-details.html" class="tran3s cart">ADD TO CART</a>
+              <a href="#" class="tran3s cart cart-btn"
+                 :class="{ disabled: !canAddToCart }"
+                 @click.prevent="addToShoppingCart({
+                 id: product.id, count: 1, locationId: product.location[0].id, price: 1, note: ''
+                 })">ADD TO CART</a>
             </div> <!-- /.single-item -->
           </div>
         </div>
@@ -57,21 +61,32 @@
 <script lang="ts">
 import Vue from 'vue';
 import ShopPM from '@/presentation-models/ShopPM';
+import eventBus from '@/eventBus';
 
 export default Vue.extend({
   name: 'Shop',
   data() {
     return {
       pm: new ShopPM(),
+      canAddToCart: true,
     };
   },
-  async created() {
+  async created(): Promise<void> {
     await this.pm.hydrate(this.$route.params.category);
-    console.log(this.$route.params.category);
   },
   methods: {
-    async loadProducts(category: string) {
+    async loadProducts(category: string): Promise<void> {
       await this.pm.loadProducts(category);
+    },
+    async addToShoppingCart(
+      product: { id: number; count: number; locationId: number; price: number; note?: string; },
+    ): Promise<void> {
+      if (this.canAddToCart) {
+        this.canAddToCart = false;
+        await this.cartPM.addToCart(product);
+        eventBus.$emit('cart-change');
+        this.canAddToCart = true;
+      }
     },
   },
 });
@@ -117,9 +132,12 @@ export default Vue.extend({
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px;
-    .single-item img {
+    .single-item > img {
       width: 270px !important;
       height: 255px !important;
+    }
+    .single-item > a.disabled {
+      background-color: gainsboro;
     }
   }
 }

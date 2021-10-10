@@ -15,7 +15,7 @@
                 data-saveperformance="off"
                 data-title="01"
                 data-description="">
-              <img src="images/1.jpg"
+              <img :src="require('../../public/images/1.jpg')"
                    alt="image" class="rev-slidebg"
                    data-bgparallax="3"
                    data-bgposition="center center"
@@ -56,11 +56,11 @@
                 data-easein="Power4.easeInOut"
                 data-easeout="Power4.easeInOut"
                 data-masterspeed="2000"
-                data-thumb="images/2.jpg"
+                :data-thumb="require('../../public/images/2.jpg')"
                 data-rotate="0"
                 data-saveperformance="off"
                 data-title="02" data-description="">
-              <img src="images/2.jpg"
+              <img :src="require('../../public/images/2.jpg')"
                    alt=""
                    data-bgposition="center center"
                    data-kenburns="on" data-duration="30000"
@@ -109,7 +109,7 @@
         <div class="row">
           <div class="col-sm-4 col-xs-12">
             <div class="single-do text-center hvr-float-shadow">
-              <img src="images/icon/18.png" alt="icon">
+              <img :src="require('../../public/images/icon/18.png')" alt="icon">
               <h5><a href="" class="tran3s">Collect Donation</a></h5>
               <span>Help us by donating</span>
               <p>There are many variations of passage of Lorem Ipsum available, but the majority have suffered alteration</p>
@@ -117,7 +117,7 @@
           </div> <!-- /.col- -->
           <div class="col-sm-4 col-xs-12">
             <div class="single-do text-center hvr-float-shadow">
-              <img src="images/icon/19.png" alt="icon">
+              <img :src="require('../../public/images/icon/19.png')" alt="icon">
               <h5><a href="" class="tran3s">Fundrising</a></h5>
               <span>Collect fund over the world</span>
               <p>There are many variations of passage of Lorem Ipsum available, but the majority have suffered alteration</p>
@@ -125,7 +125,7 @@
           </div> <!-- /.col- -->
           <div class="col-sm-4 col-xs-12">
             <div class="single-do text-center hvr-float-shadow">
-              <img src="images/icon/20.png" alt="icon">
+              <img :src="require('../../public/images/icon/20.png')" alt="icon">
               <h5><a href="" class="tran3s">Volunteer</a></h5>
               <span>Become a volunteer</span>
               <p>There are many variations of passage of Lorem Ipsum available, but the majority have suffered alteration</p>

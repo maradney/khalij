@@ -11,9 +11,9 @@
           <div class="container">
             <div class="main-container clearfix">
               <div class="logo__container float-left">
-                <a href="/">
-                  <img class="logo__container__img" src="/logo.png" alt="Logo">
-                </a>
+                <router-link class="tran3s" to="/">
+                  <img class="logo__container__img" :src="require('../public/logo.png')" alt="Logo">
+                </router-link>
               </div>
 
               <div class="right-content float-right">
@@ -23,20 +23,51 @@
                   </select>
                 </div> <!-- /.language-select -->
                 <button class="search ch-p-bg-color round-border tran3s" id="search-button">
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  {{ cart.products.length > 0 ? cart.products.length : '' }}
                 </button>
                 <div class="search-box tran5s" id="searchWrapper">
                   <button id="close-button" class="ch-p-color">
                     <i class="flaticon-cross"></i>
                   </button>
                   <div class="container">
-
-                    <form action="#">
-                      <input type="text" placeholder="Search....">
-                      <button class="ch-p-bg-color">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                      </button>
-                    </form>
+                    <div class="cart-modal">
+                      <div class="progress" v-show="cartPM.cartActionLoading">
+                        <div class="progress-bar progress-bar-striped active"
+                             role="progressbar"
+                             aria-valuenow="45"
+                             aria-valuemin="0"
+                             aria-valuemax="100"
+                             style="width: 100%">
+                        </div>
+                      </div>
+                      <table class="table">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>PRODUCT ID</th>
+                          <th>NAME</th>
+                          <th>COUNT</th>
+                          <th>PRICE</th>
+                          <th>ACTIONS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(product, index) in cart.products" :key="`cart${product.name} - ${index}`">
+                          <td>{{ index }}</td>
+                          <td>{{ product.product_id }}</td>
+                          <td>{{ product.name }}</td>
+                          <td>{{ product.count }}</td>
+                          <td>{{ product.price }}</td>
+                          <td>
+                            <button class="cart-table-remove-btn" @click.prevent="removeFromShoppingCart(product.id)">
+                              <i class="flaticon-cross"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div> <!-- /.search-box -->
               </div> <!-- /.right-content -->
@@ -49,16 +80,6 @@
                       <router-link to="/">Home</router-link>
                       <router-link to="/shop">Shop</router-link>
                     </li>
-<!--                    <li>-->
-<!--                      <router-link to="/about">About us</router-link>-->
-<!--                    </li>-->
-<!--                    <li><a href="#">Page</a>-->
-<!--                      <ul class="dropdown">-->
-<!--                        <li><a href="#">Recent Cause List</a></li>-->
-<!--                        <li><a href="#">Recent Cause Grid</a></li>-->
-<!--                        <li><a href="#">Cause Details</a></li>-->
-<!--                      </ul>-->
-<!--                    </li>-->
                   </ul>
                 </nav>
               </div>
@@ -73,10 +94,10 @@
         <div class="container">
           <div class="top-footer row">
             <div class="col-md-3 col-sm-6 footer-logo">
-              <a href="#"><img src="/logo.png" alt="Logo"></a>
+              <a href="#"><img :src="require('../public/logo.png')" alt="Logo"></a>
               <p>
-                Lorem ipsum dolor  amet natum latine copiosa at quo,
-                suas labore saperet  has there any quote for write lorem percit latineu suas dummy.
+                Lorem ipsum dolor amet natum latine copiosa at quo,
+                suas labore saperet has there any quote for write lorem percit latineu suas dummy.
               </p>
             </div> <!-- /.footer-logo -->
 
@@ -103,7 +124,8 @@
               <p>This sounded a very good reason, and Alice was quite pleased to know it.</p>
               <form action="#">
                 <input type="text" placeholder="Enter your e-mail">
-                <button class="tran3s ch-p-bg-color"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                <button class="tran3s ch-p-bg-color"><i class="fa fa-angle-right"
+                                                        aria-hidden="true"></i></button>
               </form>
             </div> <!-- /.footer-subscribe -->
           </div> <!-- /.top-footer -->
@@ -114,16 +136,22 @@
             <div class="wrapper clearfix">
               <p class="float-left">
                 Copyright &copy; 2018 Consulting Theme. All rights reserved
-                <a href="https://themeforest.net/user/unifytheme" class="tran3s p-color" target="_blank">
+                <a href="https://themeforest.net/user/unifytheme" class="tran3s p-color"
+                   target="_blank">
                   Unifytheme
                 </a>
               </p>
               <ul class="float-right">
-                <li><a href="" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="" class="tran3s round-border"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="" class="tran3s round-border"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                <li><a href="" class="tran3s round-border"><i class="fa fa-facebook"
+                                                              aria-hidden="true"></i></a></li>
+                <li><a href="" class="tran3s round-border"><i class="fa fa-dribbble"
+                                                              aria-hidden="true"></i></a></li>
+                <li><a href="" class="tran3s round-border"><i class="fa fa-linkedin"
+                                                              aria-hidden="true"></i></a></li>
+                <li><a href="" class="tran3s round-border"><i class="fa fa-twitter"
+                                                              aria-hidden="true"></i></a></li>
+                <li><a href="" class="tran3s round-border"><i class="fa fa-vimeo"
+                                                              aria-hidden="true"></i></a></li>
               </ul>
             </div> <!-- /.wrapper -->
           </div> <!-- /.container -->
@@ -141,6 +169,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import RootPM from '@/presentation-models/RootPM';
+import eventBus from '@/eventBus';
 
 export default Vue.extend({
   data() {
@@ -148,10 +177,36 @@ export default Vue.extend({
       pm: new RootPM(),
     };
   },
+  async created() {
+    await this.cartPM.hydrateCart();
+    eventBus.$on('cart-change', async () => {
+      await this.cartPM.hydrateCart();
+      this.cartPM.cartActionLoading = false;
+    });
+  },
+  computed: {
+    cart() {
+      return this.cartPM.cart;
+    },
+  },
+  methods: {
+    async removeFromShoppingCart(
+      cartItemId: number,
+    ): Promise<void> {
+      if (!this.cartPM.cartActionLoading) {
+        this.cartPM.cartActionLoading = true;
+        await this.cartPM.deleteCart(cartItemId);
+        eventBus.$emit('cart-change');
+      }
+    },
+  },
   metaInfo: {
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
     ],
   },
 });
@@ -162,9 +217,20 @@ export default Vue.extend({
   &__container {
     background-color: white;
     border-radius: 75px;
+
     &__img {
       height: 120px;
     }
   }
+}
+
+.cart-modal {
+  height: 100%;
+  width: 100%;
+  padding-top: 10%;
+}
+
+.cart-table-remove-btn {
+  background-color: transparent !important;
 }
 </style>
