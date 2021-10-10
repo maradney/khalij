@@ -217,11 +217,11 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .logo {
   &__container {
-    background-color: white;
-    border-radius: 75px;
-
     &__img {
-      height: 120px;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      background-color: white;
     }
   }
 }
