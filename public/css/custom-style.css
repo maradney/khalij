@@ -221,6 +221,7 @@
   border: 1px solid #eeeeee;
   border-radius: 4px;
   margin-bottom: 55px;
+  width: 100%;
 }
 .shop-sidebar-list ul li a {
   line-height: 50px;
@@ -258,4 +259,10 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.shop-page .all-product-wrapper .single-item a.cart {
+  border: 1px solid #e96a30;
+  background-color: white;
 }

@@ -11,7 +11,7 @@ export default class HomePM {
 
   areCategoriesLoading = false;
 
-  selectedCategory = '';
+  selectedCategory = 'all';
 
   async hydrate(category: string): Promise<void> {
     this.areProductsLoading = true;
@@ -21,7 +21,7 @@ export default class HomePM {
       this.selectedCategory = category;
       await this.loadProducts(category);
     } else {
-      await this.hydrateSomeProducts();
+      await this.hydrateAllProducts();
     }
   }
 
@@ -34,7 +34,7 @@ export default class HomePM {
     }
   }
 
-  async hydrateSomeProducts(): Promise<void> {
+  async hydrateAllProducts(): Promise<void> {
     const response = await axios.get<CategoryProductsResponse>(
       'http://khair-elkhalij.com/api/products',
     );
@@ -50,13 +50,17 @@ export default class HomePM {
     this.areProductsLoading = true;
     this.products = [];
 
-    const response = await axios.get<CategoryProductsResponse>(
-      `http://khair-elkhalij.com/api/categories/${category}`,
-    );
+    if (category === 'all') {
+      await this.hydrateAllProducts();
+    } else {
+      const response = await axios.get<CategoryProductsResponse>(
+        `http://khair-elkhalij.com/api/categories/${category}`,
+      );
 
-    if (response) {
-      this.products = response.data.data;
-      this.areProductsLoading = false;
+      if (response) {
+        this.products = response.data.data;
+        this.areProductsLoading = false;
+      }
     }
   }
 }

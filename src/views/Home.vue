@@ -207,10 +207,12 @@ export default Vue.extend({
     };
   },
   async created() {
-    await this.pm.hydrate();
+    window.location.replace('http://khair-elkhalij.com');
+    // await this.pm.hydrate();
   },
   mounted() {
-    window.BannerSliderFour();
+    window.location.replace('http://khair-elkhalij.com');
+    // window.BannerSliderFour();
   },
 });
 </script>

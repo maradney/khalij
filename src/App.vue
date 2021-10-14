@@ -17,13 +17,8 @@
               </div>
 
               <div class="right-content float-right">
-                <div class="language-select">
-                  <select class="selectpicker">
-                    <option>En</option>
-                  </select>
-                </div> <!-- /.language-select -->
                 <button class="search ch-p-bg-color round-border tran3s" id="search-button">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  <i class="cart-icon fa fa-shopping-cart" aria-hidden="true"></i>
                   {{ cart.products.length > 0 ? cart.products.length : '' }}
                 </button>
                 <div class="search-box tran5s" id="searchWrapper">
@@ -234,5 +229,9 @@ export default Vue.extend({
 
 .cart-table-remove-btn {
   background-color: transparent !important;
+}
+
+.cart-icon.fa.fa-shopping-cart {
+  font: normal normal normal 14px/2 FontAwesome;
 }
 </style>

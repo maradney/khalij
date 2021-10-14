@@ -20,10 +20,23 @@
     <div class="shop-page">
       <div class="shop-sidebar-list shop-page__side">
         <h3>Categories</h3>
-        <div class="loader-container">
-          <div class="loader" v-show="pm.areCategoriesLoading"></div>
+        <div class="progress" v-show="pm.areCategoriesLoading">
+          <div class="progress-bar progress-bar-striped active"
+               role="progressbar"
+               aria-valuenow="45"
+               aria-valuemin="0"
+               aria-valuemax="100"
+               style="width: 100%">
+          </div>
         </div>
         <ul>
+          <li>
+            <a class="tran3s"
+               v-bind:class="{ active: pm.selectedCategory === 'all' }"
+               @click.prevent="loadProducts('all')">
+              All
+            </a>
+          </li>
           <li v-for="(category, index) in pm.categories" :key="`c${category.name} - ${index}`">
             <a class="tran3s"
                v-bind:class="{ active: pm.selectedCategory === category.slug }"
@@ -34,8 +47,14 @@
         </ul>
       </div>
       <div class="shop-page__shop-content">
-        <div class="loader-container">
-          <div class="loader" v-show="pm.areProductsLoading"></div>
+        <div class="progress" v-show="pm.areProductsLoading || !this.canAddToCart">
+          <div class="progress-bar progress-bar-striped active"
+               role="progressbar"
+               aria-valuenow="45"
+               aria-valuemin="0"
+               aria-valuemax="100"
+               style="width: 100%">
+          </div>
         </div>
         <div class="all-product-wrapper shop-page__products">
           <div class="shop-page__products__product"
@@ -95,32 +114,34 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+.theme-inner-banner {
+  background: url(../../public/images/3.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 60px;
+}
 .shop-page {
   display: flex;
   flex-basis: 0;
   gap: 60px;
+  padding-inline-start: 10vw;
+  padding-inline-end: 10vw;
   &__side {
     flex-grow: 1;
-    max-width: 250px;
-    padding: 10px 10px 10px 30px;
+    max-width: 270px;
+    padding: 10px 10px 10px 10px;
+    width: 270px;
     h3 {
       margin-bottom: 20px;
-    }
-    .loader-container {
-      align-items: center;
-      justify-content: center;
-      display: flex;
-
-      .loader {
-        height: 30px;
-        width: 30px;
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #3498db;
-      }
     }
   }
   &__shop-content{
     width: 100%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
     .loader-container {
       width: 100%;
       display: flex;
@@ -139,7 +160,7 @@ export default Vue.extend({
       height: 255px !important;
     }
     .single-item > a.disabled {
-      background-color: gainsboro;
+      background-color: gainsboro !important;
     }
   }
 }
